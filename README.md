@@ -42,4 +42,7 @@ gubraun/app
 
 # reason: in package 'mock' (part of module 'testify' but not used)
 github.com/stretchr/objx
+
+# reason: used by 'main_test.go' only
+gitlab.com/nyarla/go-crypt
 ```
