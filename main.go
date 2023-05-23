@@ -3,13 +3,18 @@ package main
 import (
     "fmt"
     "strings"
-    "os"
     "time"
     "github.com/lestrrat-go/strftime"
     "github.com/spf13/cobra"
 )
 
 var ref = time.Unix(1136239445, 123456789).UTC()
+
+func gimmeTime() (string, error) {
+	dt := time.Date(1, 1, 1, 18, 0, 0, 0, time.UTC)
+	s, err := strftime.Format("%d", dt)
+	return s, err
+}
 
 func main() {
     var echoTimes int
@@ -46,14 +51,6 @@ func main() {
 	    for i := 0; i < echoTimes; i++ {
 		fmt.Println("Echo: " + strings.Join(args, " "))
 	    }
-	    // I want %L as milliseconds!
-	    p, err := strftime.New(`%L`, strftime.WithMilliseconds('L'))
-	    if err != nil {
-		fmt.Println(err)
-		return
-	    }
-	    p.Format(os.Stdout, ref)
-	    os.Stdout.Write([]byte{'\n'})
 	},
     }
 
