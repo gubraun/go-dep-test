@@ -1,5 +1,15 @@
 # go-dep-test
 
+## Reasons
+1. Dependencies of unused package of dependent module
+   * Example: dependent module `cobra` has packages `cobra` and `doc`, but only package `cobra` is imported. Thus, all dependencies of package `doc` are not required.
+3. Transitive test dependencies
+   * Example: module `strftime` has a package `strftime.test`, which has dependencies. Similar to reason 1 above.
+5. Direct test dependency
+   * Example: `main_test.go` has dependencies.
+7. Dependencies specific to build tags
+   * Example: Window-specific dependencies.
+
 ## Actual Dependencies
 ```
 github.com/gubraun/go-dep-test
