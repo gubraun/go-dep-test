@@ -1,23 +1,16 @@
 package main
 
 import (
-    "gitlab.com/nyarla/go-crypt"
+    "github.com/dustin/go-humanize"
     "testing"
 )
 
 
 func TestGimmeTime(t *testing.T) {
-    want := "01"
-    msg, err := gimmeTime()
-    if msg != want || err != nil {
-	t.Fatalf(`Want: %v --> return value: %v`, want, msg)
-    }
-}
-
-func TestCrypt(t *testing.T) {
-    want := "esDRYJnY4VaGM"
-    msg := crypt.Crypt("testtest", "es")
+    want := "16 years ago"
+    msg := humanize.Time(gimmeTime())
     if msg != want {
 	t.Fatalf(`Want: %v --> return value: %v`, want, msg)
     }
 }
+

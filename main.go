@@ -4,16 +4,33 @@ import (
     "fmt"
     "strings"
     "time"
+    "os"
     "github.com/lestrrat-go/strftime"
     "github.com/spf13/cobra"
+    "gitlab.com/nyarla/go-crypt"
 )
 
 var ref = time.Unix(1136239445, 123456789).UTC()
 
-func gimmeTime() (string, error) {
-	dt := time.Date(1, 1, 1, 18, 0, 0, 0, time.UTC)
-	s, err := strftime.Format("%d", dt)
-	return s, err
+func printTime() {
+    p, err := strftime.New(`%L`, strftime.WithMilliseconds('L'))
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    p.Format(os.Stdout, ref)
+    os.Stdout.Write([]byte{'\n'})
+}
+
+func gimmeTime() (time.Time) {
+     dt := time.Date(2007, 2, 18, 7, 19, 0, 0, time.UTC)
+     return dt
+}
+
+func gimmeCrypt() (string) {
+    pt := "Hello"
+    ct := crypt.Crypt(pt, "es")
+    return ct
 }
 
 func main() {
