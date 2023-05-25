@@ -17,6 +17,7 @@ github.com/gubraun/go-dep-test
     |-- github.com/pkg/errors         v0.9.1
 |-- github.com/spf13/cobra            v1.7.0
     |-- github.com/spf13/pflag        v1.0.5
+|-- gitlab.com/nyarla/go-crypt        v0.0.0-20160106005555-d9a5dc2b789b    
 ```
  
 ## Unused Dependencies
@@ -44,5 +45,5 @@ gubraun/app
 github.com/stretchr/objx
 
 # reason (3): used by 'main_test.go' only
-gitlab.com/nyarla/go-crypt
+github.com/dustin/go-humanize
 ```
